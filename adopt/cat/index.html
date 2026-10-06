@@ -210,7 +210,7 @@ function paint(){
  var n=0;
  document.querySelectorAll(".card").forEach(function(c){var m=match(PETS[c.dataset.id]);if(m)n++;
   c.classList.toggle("dim",!!any&&!m&&!st.only);c.classList.toggle("hide",!!any&&!m&&st.only)});
- $("count").textContent=any?n+" match of "+PETS.length+" animals. Others stay visible, dimmed.":"Showing all "+PETS.length+" animals.";
+ $("count").textContent=any?n+" match of "+PETS.length+" animals.":"Showing all "+PETS.length+" animals.";
  if(st.only&&any)$("count").textContent=n+" match of "+PETS.length+" animals. "+(PETS.length-n)+" hidden.";
  $("clear").style.visibility=any||st.only?"visible":"hidden";
  stats()}
