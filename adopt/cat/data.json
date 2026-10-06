@@ -1,0 +1,623 @@
+{
+  "imageFolder": "image/",
+  "imageNaming": "<animal> <petNumber>-<imageNumber>.png (temporary convention)",
+  "pets": [
+    {
+      "id": "biscuit",
+      "name": "Biscuit",
+      "type": "Dog",
+      "emoji": "🐕",
+      "ageYears": 9,
+      "size": "Large",
+      "daysInCare": 120,
+      "senior": true,
+      "bonded": false,
+      "special": true,
+      "goodWith": {
+        "kids": false,
+        "dogs": false,
+        "cats": true
+      },
+      "feeUsd": 150,
+      "description": "Mellow couch companion. Walks slowly, loves ear scratches.",
+      "attendingSaturday": true,
+      "images": [
+        "dog 1-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "juniper",
+      "name": "Juniper",
+      "type": "Cat",
+      "emoji": "🐈",
+      "ageYears": 5,
+      "size": "Small",
+      "daysInCare": 64,
+      "senior": false,
+      "bonded": false,
+      "special": false,
+      "goodWith": {
+        "kids": true,
+        "dogs": true,
+        "cats": true
+      },
+      "feeUsd": 95,
+      "description": "Quiet lap cat. Needs a calm home.",
+      "attendingSaturday": true,
+      "images": [
+        "cat 1-1.png",
+        "cat 1-2.png",
+        "cat 1-3.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "mochi",
+      "name": "Mochi",
+      "type": "Kitten",
+      "emoji": "🐱",
+      "ageYears": 0.3,
+      "size": "Small",
+      "daysInCare": 12,
+      "senior": false,
+      "bonded": true,
+      "special": false,
+      "goodWith": {
+        "kids": true,
+        "dogs": true,
+        "cats": true
+      },
+      "feeUsd": 125,
+      "description": "Bold and silly. Adopts best with a sibling.",
+      "attendingSaturday": true,
+      "images": [
+        "cat 2-1.png",
+        "cat 2-2.png",
+        "cat 2-3.png",
+        "cat 2-4.png",
+        "cat 2-5.png"
+      ],
+      "siblings": [
+        "pip"
+      ],
+      "parents": [
+        "juniper"
+      ]
+    },
+    {
+      "id": "pip",
+      "name": "Pip",
+      "type": "Kitten",
+      "emoji": "🐱",
+      "ageYears": 0.3,
+      "size": "Small",
+      "daysInCare": 12,
+      "senior": false,
+      "bonded": true,
+      "special": false,
+      "goodWith": {
+        "kids": true,
+        "dogs": true,
+        "cats": true
+      },
+      "feeUsd": 125,
+      "description": "Bonded with Mochi. Adopted together.",
+      "attendingSaturday": false,
+      "images": [
+        "cat 3-1.png",
+        "cat 3-2.png",
+        "cat 3-3.png",
+        "cat 3-4.png"
+      ],
+      "siblings": [
+        "mochi"
+      ],
+      "parents": [
+        "juniper"
+      ]
+    },
+    {
+      "id": "ranger",
+      "name": "Ranger",
+      "type": "Dog",
+      "emoji": "🐶",
+      "ageYears": 3,
+      "size": "Large",
+      "daysInCare": 33,
+      "senior": false,
+      "bonded": false,
+      "special": false,
+      "goodWith": {
+        "kids": true,
+        "dogs": false,
+        "cats": true
+      },
+      "feeUsd": 200,
+      "description": "Energetic hiker. Needs a fenced yard.",
+      "attendingSaturday": true,
+      "images": [
+        "dog 2-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "clover",
+      "name": "Clover",
+      "type": "Rabbit",
+      "emoji": "🐇",
+      "ageYears": 2,
+      "size": "Small",
+      "daysInCare": 48,
+      "senior": false,
+      "bonded": false,
+      "special": false,
+      "goodWith": {
+        "kids": false,
+        "dogs": false,
+        "cats": true
+      },
+      "feeUsd": 60,
+      "description": "Litter trained. Loves greens and quiet.",
+      "attendingSaturday": false,
+      "images": [
+        "rabbit 1-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "waffles",
+      "name": "Waffles",
+      "type": "Puppy",
+      "emoji": "🐕",
+      "ageYears": 0.4,
+      "size": "Medium",
+      "daysInCare": 8,
+      "senior": false,
+      "bonded": false,
+      "special": false,
+      "goodWith": {
+        "kids": true,
+        "dogs": true,
+        "cats": true
+      },
+      "feeUsd": 250,
+      "description": "Goofy, learning leash manners.",
+      "attendingSaturday": true,
+      "images": [
+        "dog 3-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "gus",
+      "name": "Gus",
+      "type": "Cat",
+      "emoji": "🐈‍⬛",
+      "ageYears": 12,
+      "size": "Medium",
+      "daysInCare": 210,
+      "senior": true,
+      "bonded": false,
+      "special": true,
+      "goodWith": {
+        "kids": false,
+        "dogs": true,
+        "cats": true
+      },
+      "feeUsd": 50,
+      "description": "Kidney diet, easy to manage. Deeply affectionate.",
+      "attendingSaturday": true,
+      "images": [
+        "cat 4-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "nora",
+      "name": "Nora",
+      "type": "Dog",
+      "emoji": "🐕‍🦺",
+      "ageYears": 7,
+      "size": "Medium",
+      "daysInCare": 95,
+      "senior": false,
+      "bonded": false,
+      "special": false,
+      "goodWith": {
+        "kids": true,
+        "dogs": true,
+        "cats": true
+      },
+      "feeUsd": 150,
+      "description": "Calm with kids and cats. Knows sit and paw.",
+      "attendingSaturday": false,
+      "images": [
+        "dog 4-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "tilly",
+      "name": "Tilly",
+      "type": "Guinea pig",
+      "emoji": "🐹",
+      "ageYears": 1,
+      "size": "Small",
+      "daysInCare": 27,
+      "senior": false,
+      "bonded": true,
+      "special": false,
+      "goodWith": {
+        "kids": false,
+        "dogs": false,
+        "cats": true
+      },
+      "feeUsd": 40,
+      "description": "Bonded with Penny. Wheeks at snack time.",
+      "attendingSaturday": false,
+      "images": [
+        "guinea pig 1-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "penny",
+      "name": "Penny",
+      "type": "Guinea pig",
+      "emoji": "🐹",
+      "ageYears": 1,
+      "size": "Small",
+      "daysInCare": 27,
+      "senior": false,
+      "bonded": true,
+      "special": false,
+      "goodWith": {
+        "kids": false,
+        "dogs": false,
+        "cats": true
+      },
+      "feeUsd": 40,
+      "description": "Bonded with Tilly. Adopted together.",
+      "attendingSaturday": false,
+      "images": [
+        "guinea pig 2-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "otis",
+      "name": "Otis",
+      "type": "Cat",
+      "emoji": "🐱",
+      "ageYears": 2,
+      "size": "Medium",
+      "daysInCare": 15,
+      "senior": false,
+      "bonded": false,
+      "special": false,
+      "goodWith": {
+        "kids": true,
+        "dogs": true,
+        "cats": true
+      },
+      "feeUsd": 95,
+      "description": "Chatty, social, follows you room to room.",
+      "attendingSaturday": true,
+      "images": [
+        "cat 5-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "hazel",
+      "name": "Hazel",
+      "type": "Dog",
+      "emoji": "🐶",
+      "ageYears": 10,
+      "size": "Small",
+      "daysInCare": 142,
+      "senior": true,
+      "bonded": false,
+      "special": true,
+      "goodWith": {
+        "kids": true,
+        "dogs": true,
+        "cats": true
+      },
+      "feeUsd": 100,
+      "description": "Tiny and gray-muzzled. Needs daily meds.",
+      "attendingSaturday": true,
+      "images": [
+        "dog 5-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "pepper",
+      "name": "Pepper",
+      "type": "Cat",
+      "emoji": "🐈‍⬛",
+      "ageYears": 4,
+      "size": "Medium",
+      "daysInCare": 70,
+      "senior": false,
+      "bonded": false,
+      "special": false,
+      "goodWith": {
+        "kids": false,
+        "dogs": false,
+        "cats": false
+      },
+      "feeUsd": 95,
+      "description": "Shy at first, then velvet. Best with adults.",
+      "attendingSaturday": false,
+      "images": [
+        "cat 6-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "moose",
+      "name": "Moose",
+      "type": "Dog",
+      "emoji": "🐕",
+      "ageYears": 2,
+      "size": "Large",
+      "daysInCare": 20,
+      "senior": false,
+      "bonded": false,
+      "special": false,
+      "goodWith": {
+        "kids": false,
+        "dogs": true,
+        "cats": true
+      },
+      "feeUsd": 200,
+      "description": "Goofy giant. Needs a dog-savvy home.",
+      "attendingSaturday": true,
+      "images": [
+        "dog 6-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "fig",
+      "name": "Fig",
+      "type": "Cat",
+      "emoji": "🐈",
+      "ageYears": 1,
+      "size": "Small",
+      "daysInCare": 6,
+      "senior": false,
+      "bonded": false,
+      "special": false,
+      "goodWith": {
+        "kids": true,
+        "dogs": true,
+        "cats": true
+      },
+      "feeUsd": 125,
+      "description": "Playful teen. Loves feather wands.",
+      "attendingSaturday": false,
+      "images": [
+        "cat 7-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "daisy",
+      "name": "Daisy",
+      "type": "Rabbit",
+      "emoji": "🐇",
+      "ageYears": 4,
+      "size": "Small",
+      "daysInCare": 83,
+      "senior": false,
+      "bonded": false,
+      "special": false,
+      "goodWith": {
+        "kids": false,
+        "dogs": false,
+        "cats": false
+      },
+      "feeUsd": 60,
+      "description": "Gentle. Prefers floor-level cuddles.",
+      "attendingSaturday": false,
+      "images": [
+        "rabbit 2-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "bean",
+      "name": "Bean",
+      "type": "Dog",
+      "emoji": "🐶",
+      "ageYears": 6,
+      "size": "Small",
+      "daysInCare": 57,
+      "senior": false,
+      "bonded": false,
+      "special": true,
+      "goodWith": {
+        "kids": true,
+        "dogs": false,
+        "cats": true
+      },
+      "feeUsd": 150,
+      "description": "Deaf, reads hand signals. Eager to learn.",
+      "attendingSaturday": false,
+      "images": [
+        "dog 7-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "sunny",
+      "name": "Sunny",
+      "type": "Cat",
+      "emoji": "🐈",
+      "ageYears": 8,
+      "size": "Medium",
+      "daysInCare": 101,
+      "senior": true,
+      "bonded": false,
+      "special": false,
+      "goodWith": {
+        "kids": true,
+        "dogs": false,
+        "cats": true
+      },
+      "feeUsd": 50,
+      "description": "Sunbather and window watcher.",
+      "attendingSaturday": false,
+      "images": [
+        "cat 8-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "rex",
+      "name": "Rex",
+      "type": "Dog",
+      "emoji": "🐕‍🦺",
+      "ageYears": 5,
+      "size": "Large",
+      "daysInCare": 38,
+      "senior": false,
+      "bonded": false,
+      "special": false,
+      "goodWith": {
+        "kids": true,
+        "dogs": true,
+        "cats": true
+      },
+      "feeUsd": 175,
+      "description": "Smart, loves puzzle toys. Great with cats.",
+      "attendingSaturday": true,
+      "images": [
+        "dog 8-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "poppy",
+      "name": "Poppy",
+      "type": "Puppy",
+      "emoji": "🐶",
+      "ageYears": 0.5,
+      "size": "Small",
+      "daysInCare": 5,
+      "senior": false,
+      "bonded": false,
+      "special": false,
+      "goodWith": {
+        "kids": true,
+        "dogs": true,
+        "cats": true
+      },
+      "feeUsd": 250,
+      "description": "Curious and snuggly.",
+      "attendingSaturday": false,
+      "images": [
+        "dog 9-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "ash",
+      "name": "Ash",
+      "type": "Cat",
+      "emoji": "🐈‍⬛",
+      "ageYears": 3,
+      "size": "Medium",
+      "daysInCare": 180,
+      "senior": false,
+      "bonded": false,
+      "special": true,
+      "goodWith": {
+        "kids": true,
+        "dogs": true,
+        "cats": true
+      },
+      "feeUsd": 95,
+      "description": "FIV+, healthy. Lives happily with other cats.",
+      "attendingSaturday": false,
+      "images": [
+        "cat 9-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "marlo",
+      "name": "Marlo",
+      "type": "Cat",
+      "emoji": "🐈",
+      "ageYears": 1,
+      "size": "Small",
+      "daysInCare": 9,
+      "senior": false,
+      "bonded": false,
+      "special": false,
+      "goodWith": {
+        "kids": true,
+        "dogs": true,
+        "cats": true
+      },
+      "feeUsd": 125,
+      "description": "Calm kitten, handles visitors well.",
+      "attendingSaturday": false,
+      "images": [
+        "cat 10-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    },
+    {
+      "id": "clementine",
+      "name": "Clementine",
+      "type": "Dog",
+      "emoji": "🐕",
+      "ageYears": 1.5,
+      "size": "Medium",
+      "daysInCare": 44,
+      "senior": false,
+      "bonded": false,
+      "special": false,
+      "goodWith": {
+        "kids": true,
+        "dogs": true,
+        "cats": true
+      },
+      "feeUsd": 200,
+      "description": "Social, loves other dogs.",
+      "attendingSaturday": true,
+      "images": [
+        "dog 10-1.png"
+      ],
+      "siblings": [],
+      "parents": []
+    }
+  ]
+}

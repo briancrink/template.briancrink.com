@@ -65,6 +65,11 @@ header .wrap{display:flex;flex-wrap:nowrap;align-items:center;justify-content:sp
 .meta b{font-family:'Bricolage Grotesque';font-size:1rem;line-height:1.2}
 .meta span{font-size:.76rem;color:#3d566e;line-height:1.3}
 .badge{position:absolute;top:8px;left:8px;padding:3px 9px;border-radius:999px;font-size:.7rem;font-weight:600;color:#12304a;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.8);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.thumbs{display:flex;gap:6px;padding:8px 18px 0;overflow-x:auto}
+.th{flex:0 0 auto;width:56px;height:56px;border:2px solid transparent;border-radius:10px;padding:0;overflow:hidden;background:var(--bg)}
+.th[aria-current=true]{border-color:var(--teal)}
+.th img{width:100%;height:100%;object-fit:cover;display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}}
 @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.94)}}
 @keyframes bk{from{opacity:0}}
@@ -98,6 +103,14 @@ dialog::backdrop{background:rgba(10,25,24,.6)}
 .steps{margin:8px 0 14px;padding-left:20px;color:var(--mute)}
 .x{position:absolute;top:10px;right:10px;background:var(--surf);border:0;border-radius:999px;width:36px;height:36px;font-size:1.2rem}
 .ok{color:var(--teal);font-weight:600;margin-top:8px}
+html,body,button,label,summary,.card,.chip,.cat,.btn,.ddm li,.ddb,.th,input[type=checkbox]{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2230%22%20height%3D%2230%22%20viewBox%3D%220%200%2032%2032%22%20fill%3D%22%232a6cb0%22%20stroke%3D%22%23fff%22%20stroke-width%3D%220.9%22%20paint-order%3D%22stroke%22%3E%3Cg%20transform%3D%22translate%2810%2021%29%20rotate%28-20%29%22%3E%3Cellipse%20cx%3D%220%22%20cy%3D%223%22%20rx%3D%224.3%22%20ry%3D%223.5%22%2F%3E%3Cellipse%20cx%3D%22-4.7%22%20cy%3D%22-2.2%22%20rx%3D%221.7%22%20ry%3D%222.2%22%20transform%3D%22rotate%28-20%20-4.7%20-2.2%29%22%2F%3E%3Cellipse%20cx%3D%22-1.7%22%20cy%3D%22-5%22%20rx%3D%221.7%22%20ry%3D%222.2%22%2F%3E%3Cellipse%20cx%3D%221.7%22%20cy%3D%22-5%22%20rx%3D%221.7%22%20ry%3D%222.2%22%2F%3E%3Cellipse%20cx%3D%224.7%22%20cy%3D%22-2.2%22%20rx%3D%221.7%22%20ry%3D%222.2%22%20transform%3D%22rotate%2820%204.7%20-2.2%29%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%2822%2010%29%20rotate%2820%29%22%3E%3Cellipse%20cx%3D%220%22%20cy%3D%223%22%20rx%3D%224.3%22%20ry%3D%223.5%22%2F%3E%3Cellipse%20cx%3D%22-4.7%22%20cy%3D%22-2.2%22%20rx%3D%221.7%22%20ry%3D%222.2%22%20transform%3D%22rotate%28-20%20-4.7%20-2.2%29%22%2F%3E%3Cellipse%20cx%3D%22-1.7%22%20cy%3D%22-5%22%20rx%3D%221.7%22%20ry%3D%222.2%22%2F%3E%3Cellipse%20cx%3D%221.7%22%20cy%3D%22-5%22%20rx%3D%221.7%22%20ry%3D%222.2%22%2F%3E%3Cellipse%20cx%3D%224.7%22%20cy%3D%22-2.2%22%20rx%3D%221.7%22%20ry%3D%222.2%22%20transform%3D%22rotate%2820%204.7%20-2.2%29%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") 15 15,auto}
+input[type=search]{cursor:text}
+button.rel{background:none;border:0;padding:0;font:inherit;font-weight:600;color:var(--teal);text-decoration:none;transition:opacity .15s}
+button.rel:hover{opacity:.8}
+#trail{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}
+.pp{position:absolute;display:block;width:15px;height:15px;margin:-7px 0 0 -7px;color:#2a6cb0;opacity:0;transform:rotate(var(--r));animation:pawfade 1.5s ease-out forwards}
+.pp svg{display:block;width:100%;height:100%;fill:currentColor}
+@keyframes pawfade{0%{opacity:0;transform:rotate(var(--r)) scale(.5)}12%{opacity:.55;transform:rotate(var(--r)) scale(1)}100%{opacity:0;transform:rotate(var(--r)) scale(1)}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -143,33 +156,14 @@ dialog::backdrop{background:rgba(10,25,24,.6)}
 <dialog id="dlg" aria-label="Pet details"><div id="dc"></div></dialog>
 
 <script>
-var PETS=[
-["Biscuit","Dog","🐕",9,"Large",120,"Senior",0,0,1,0,1,150,"Mellow couch companion. Walks slowly, loves ear scratches.",1],
-["Juniper","Cat","🐈",5,"Small",64,"",1,1,1,0,0,95,"Quiet lap cat. Needs a calm home.",1],
-["Mochi","Kitten","🐱",0.3,"Small",12,"",1,1,1,0,0,125,"Bold and silly. Adopts best with a sibling.",1],
-["Mochi's sister Pip","Kitten","🐱",0.3,"Small",12,"Bonded",1,1,1,1,0,125,"Bonded with Mochi. Adopted together.",0],
-["Ranger","Dog","🐶",3,"Large",33,"",1,0,1,0,0,200,"Energetic hiker. Needs a fenced yard.",1],
-["Clover","Rabbit","🐇",2,"Small",48,"",0,0,1,0,0,60,"Litter trained. Loves greens and quiet.",0],
-["Waffles","Puppy","🐕",0.4,"Medium",8,"",1,1,1,0,0,250,"Goofy, learning leash manners.",1],
-["Gus","Cat","🐈‍⬛",12,"Medium",210,"Senior",0,1,1,0,1,50,"Kidney diet, easy to manage. Deeply affectionate.",1],
-["Nora","Dog","🐕‍🦺",7,"Medium",95,"",1,1,1,0,0,150,"Calm with kids and cats. Knows sit and paw.",0],
-["Tilly","Guinea pig","🐹",1,"Small",27,"",0,0,1,1,0,40,"Bonded with Penny. Wheeks at snack time.",0],
-["Penny","Guinea pig","🐹",1,"Small",27,"Bonded",0,0,1,1,0,40,"Bonded with Tilly. Adopted together.",0],
-["Otis","Cat","🐱",2,"Medium",15,"",1,1,1,0,0,95,"Chatty, social, follows you room to room.",1],
-["Hazel","Dog","🐶",10,"Small",142,"Senior",1,1,1,0,1,100,"Tiny and gray-muzzled. Needs daily meds.",1],
-["Pepper","Cat","🐈‍⬛",4,"Medium",70,"",0,0,0,0,0,95,"Shy at first, then velvet. Best with adults.",0],
-["Moose","Dog","🐕",2,"Large",20,"",0,1,1,0,0,200,"Goofy giant. Needs a dog-savvy home.",1],
-["Fig","Cat","🐈",1,"Small",6,"",1,1,1,0,0,125,"Playful teen. Loves feather wands.",0],
-["Daisy","Rabbit","🐇",4,"Small",83,"",0,0,0,0,0,60,"Gentle. Prefers floor-level cuddles.",0],
-["Bean","Dog","🐶",6,"Small",57,"",1,0,1,0,1,150,"Deaf, reads hand signals. Eager to learn.",0],
-["Sunny","Cat","🐈",8,"Medium",101,"Senior",1,0,1,0,0,50,"Sunbather and window watcher.",0],
-["Rex","Dog","🐕‍🦺",5,"Large",38,"",1,1,1,0,0,175,"Smart, loves puzzle toys. Great with cats.",1],
-["Poppy","Puppy","🐶",0.5,"Small",5,"",1,1,1,0,0,250,"Curious and snuggly.",0],
-["Ash","Cat","🐈‍⬛",3,"Medium",180,"",1,1,1,0,1,95,"FIV+, healthy. Lives happily with other cats.",0],
-["Marlo","Cat","🐈",1,"Small",9,"",1,1,1,0,0,125,"Calm kitten, handles visitors well.",0],
-["Clementine","Dog","🐕",1.5,"Medium",44,"",1,1,1,0,0,200,"Social, loves other dogs.",1]
-].map(function(a,i){return{id:i,name:a[0],type:a[1],emoji:a[2],age:a[3],size:a[4],days:a[5],senior:a[6]==="Senior",bonded:a[6]==="Bonded"||a[0]==="Mochi"||a[0]==="Tilly",kids:!!a[7],dogs:!!a[8],cats:!!a[9],pair:!!a[10],special:!!a[11],fee:a[12],blurb:a[13],sat:!!a[14]}});
-PETS.forEach(function(p){p.bonded=p.bonded||p.pair;p.group=p.senior?"Senior":p.bonded?"Bonded pair":p.special?"Special needs":"Other"});
+var PETS=[],BY={},IMG="images/";
+function src(n){return IMG+encodeURIComponent(n)}
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function mapPets(d){
+ IMG=d.imageFolder||IMG;if(IMG.slice(-1)!=="/")IMG+="/";
+ PETS=d.pets.map(function(r,i){var g=r.goodWith||{};return{id:i,slug:r.id,name:r.name,type:r.type,emoji:r.emoji,age:r.ageYears,size:r.size,days:r.daysInCare,senior:!!r.senior,bonded:!!r.bonded,special:!!r.special,kids:!!g.kids,dogs:!!g.dogs,cats:!!g.cats,fee:r.feeUsd,blurb:r.description,sat:!!r.attendingSaturday,images:r.images||[],siblings:r.siblings||[],parents:r.parents||[]}});
+ BY={};PETS.forEach(function(p){p.group=p.senior?"Senior":p.bonded?"Bonded pair":p.special?"Special needs":"Other";BY[p.slug]=p});
+}
 var TYPES=["Dog","Puppy","Cat","Kitten","Rabbit","Guinea pig"];
 var TRAITS=[["Senior",function(p){return p.senior}],["Bonded pair",function(p){return p.bonded}],["Special needs",function(p){return p.special}],["Good with kids",function(p){return p.kids}],["Good with dogs",function(p){return p.dogs}],["Good with cats",function(p){return p.cats}],["Attending Saturday",function(p){return p.sat}]];
 var st={types:{},traits:{},q:"",only:false,sort:"mix"},views={};
@@ -203,7 +197,7 @@ function build(){
   return'<button class="chip" data-c="'+t[0]+'" aria-pressed="'+!!st.traits[t[0]]+'"'+(n?'':' disabled')+'>'+t[0]+' <b>'+n+'</b></button>'}).join("");
  $("grid").innerHTML=order().map(function(p){
   var h=hue(p);
-  return'<button class="card" data-id="'+p.id+'" style="background:'+col(p)+'" aria-label="'+p.name+', '+p.type+'"><div class="ph" role="img" aria-label="Photo placeholder">'+p.emoji+'<small>photo</small></div>'+(p.group!=="Other"?'<span class="badge">'+p.group+'</span>':'')+'<div class="meta"><b>'+p.name+'</b><span>'+p.type+' · '+(p.age<1?Math.round(p.age*12)+' mo':p.age+' yr')+' · '+p.size+'</span><span>'+gw(p)+'</span></div></button>'}).join("");
+  return'<button class="card" data-id="'+p.id+'" style="background:'+col(p)+'" aria-label="'+p.name+', '+p.type+'"><div class="ph"><span aria-hidden="true">'+p.emoji+'</span>'+(p.images[0]?'<img src="'+src(p.images[0])+'" alt="Photo of '+esc(p.name)+'" loading="lazy" onerror="this.remove()">':'')+'</div>'+(p.group!=="Other"?'<span class="badge">'+p.group+'</span>':'')+'<div class="meta"><b>'+p.name+'</b><span>'+p.type+' · '+(p.age<1?Math.round(p.age*12)+' mo':p.age+' yr')+' · '+p.size+'</span><span>'+gw(p)+'</span></div></button>'}).join("");
  reveal();paint()}
 function paint(){
  var any=Object.keys(st.types).length||Object.keys(st.traits).some(function(k){return st.traits[k]})||st.q;
@@ -223,17 +217,30 @@ function stats(){
  var rows=g.map(function(k){var c=PETS.filter(function(p){return p.group===k}).length;
   return"<tr><td>"+k+"</td><td>"+pc(c)+"</td><td>"+(views[k]||0)+"</td></tr>"}).join("");
  $("stats").innerHTML="<p><b>"+N+" animals in the catalog.</b></p><p><b>By type:</b> "+ty+"</p><p><b>By trait:</b> "+tr+"</p><table><tr><th>Group</th><th>Share of catalog</th><th>Detail opens this visit</th></tr>"+rows+"</table>"}
+function gallery(p){
+ var im=p.images||[];
+ var main='<div class="ph" style="aspect-ratio:16/9;font-size:5rem;background:'+col(p)+'"><span aria-hidden="true">'+p.emoji+'</span>'+(im.length?'<img id="mainimg" src="'+src(im[0])+'" alt="Photo of '+esc(p.name)+'" onerror="this.remove()">':'<small>photo / video</small>')+'</div>';
+ var th=im.length>1?'<div class="thumbs">'+im.map(function(n,i){return'<button type="button" class="th" data-img="'+esc(n)+'" aria-label="Show photo '+(i+1)+'"'+(i===0?' aria-current="true"':'')+'><img src="'+src(n)+'" alt="" onerror="this.parentNode.remove()"></button>'}).join("")+'</div>':'';
+ return main+th}
+function rel(p,kind){
+ var list=(p[kind]||[]).slice();
+ if(kind==="siblings")PETS.forEach(function(q){if(q!==p&&q.siblings.indexOf(p.slug)>-1&&list.indexOf(q.slug)<0)list.push(q.slug)});
+ list=list.filter(function(v,i){return list.indexOf(v)===i&&v!==p.slug});
+ return list.length?list.map(function(v){var q=BY[v];return q?'<button type="button" class="rel" data-pet="'+q.id+'">'+esc(q.name)+'</button>':esc(v)}).join(", "):""}
+function relRow(p,kind,label){var h=rel(p,kind);return h?'<div><span>'+label+'</span>'+h+'</div>':''}
 function open(id){
  var p=PETS[id],h=hue(p);views[p.group]=(views[p.group]||0)+1;
- $("dc").innerHTML='<div class="ph" style="aspect-ratio:16/9;font-size:5rem;background:'+col(p)+'">'+p.emoji+'<small>photo / video</small></div><button class="x" aria-label="Close" onclick="dlg.close()">×</button><div class="dbody"><h2>'+p.name+'</h2><p style="margin:6px 0 0;color:var(--mute)">'+p.blurb+'</p><div class="facts"><div><span>Type</span>'+p.type+'</div><div><span>Age</span>'+p.age+' yr</div><div><span>Size</span>'+p.size+'</div><div><span>Adoption fee</span>$'+p.fee+' (spayed/neutered, vaccinated)</div><div><span>Good with</span>'+[p.kids?"kids":"",p.dogs?"dogs":"",p.cats?"cats":""].filter(Boolean).join(", ")+(p.kids||p.dogs||p.cats?"":"adults only")+'</div><div><span>At Saturday event</span>'+(p.sat?"Yes":"No, visit by appointment")+'</div></div><b>Next steps</b><ol class="steps"><li>Send a short application.</li><li>Meet at adoption day or with the foster.</li><li>Sign and take '+p.name+' home.</li></ol><button class="btn" id="apply">Apply to adopt '+p.name+'</button><div id="ok"></div></div>';
+ $("dc").innerHTML=gallery(p)+'<button class="x" aria-label="Close" onclick="dlg.close()">×</button><div class="dbody"><h2>'+p.name+'</h2><p style="margin:6px 0 0;color:var(--mute)">'+p.blurb+'</p><div class="facts"><div><span>Type</span>'+p.type+'</div><div><span>Age</span>'+p.age+' yr</div><div><span>Size</span>'+p.size+'</div><div><span>Adoption fee</span>$'+p.fee+' (spayed/neutered, vaccinated)</div><div><span>Good with</span>'+[p.kids?"kids":"",p.dogs?"dogs":"",p.cats?"cats":""].filter(Boolean).join(", ")+(p.kids||p.dogs||p.cats?"":"adults only")+'</div><div><span>At Saturday event</span>'+(p.sat?"Yes":"No, visit by appointment")+'</div>'+relRow(p,"siblings","Siblings")+relRow(p,"parents","Parents")+'</div><b>Next steps</b><ol class="steps"><li>Send a short application.</li><li>Meet at adoption day or with the foster.</li><li>Sign and take '+p.name+' home.</li></ol><button class="btn" id="apply">Apply to adopt '+p.name+'</button><div id="ok"></div></div>';
  $("apply").onclick=function(){$("ok").innerHTML='<p class="ok">Template only: this would open the short application form.</p>'};
- dlg.showModal();stats()}
+ dlg.scrollTop=0;if(!dlg.open)dlg.showModal();stats()}
 var dlg=$("dlg");
 dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
 document.addEventListener("click",function(e){
  var c=e.target.closest("[data-go]");if(c){var el=$(c.dataset.go);if(el)el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});return}
  c=e.target.closest("[data-t]");if(c){var t=c.dataset.t;st.types[t]?delete st.types[t]:st.types[t]=1;build();var tb=document.querySelector('[data-t="'+t+'"]');if(tb)tb.focus();return}
  c=e.target.closest("[data-c]");if(c){var k=c.dataset.c;st.traits[k]=!st.traits[k];c.setAttribute("aria-pressed",!!st.traits[k]);return paint()}
+ c=e.target.closest("[data-pet]");if(c)return open(+c.dataset.pet);
+ c=e.target.closest("[data-img]");if(c){var mi=$("mainimg");if(!mi){mi=document.createElement("img");mi.id="mainimg";mi.alt="";mi.onerror=function(){mi.remove()};document.querySelector("#dc .ph").appendChild(mi)}mi.src=src(c.dataset.img);c.parentNode.querySelectorAll(".th").forEach(function(x){x.setAttribute("aria-current",x===c)});return}
  c=e.target.closest(".card");if(c)return open(+c.dataset.id);
  c=e.target.closest("[data-form]");if(c){$("dc").innerHTML='<div class="dbody"><h2>'+c.dataset.form+'</h2><p style="color:var(--mute)">Template placeholder. The real form would open here.</p><button class="btn" onclick="dlg.close()">Got it</button></div>';dlg.showModal();return}
  if(e.target.closest(".amts .chip")){var b=e.target.closest(".chip");b.parentNode.querySelectorAll(".chip").forEach(function(x){x.setAttribute("aria-pressed",x===b)})}
@@ -258,7 +265,24 @@ $("only").onchange=function(e){st.only=e.target.checked;paint()};
 $("clear").onclick=function(){st.types={};st.traits={};st.q="";st.only=false;$("q").value="";$("only").checked=false;build()};
 $("attendBtn").onclick=function(){st.types={};st.traits={"Attending Saturday":true};build();$("cats").scrollIntoView()};
 (function(){var h=document.querySelector("header");function f(){var v=h.offsetHeight;document.body.style.paddingTop=v+"px";document.documentElement.style.setProperty("--hh",v+"px")}f();if(window.ResizeObserver)new ResizeObserver(f).observe(h);addEventListener("resize",f)})();
-build();
+(function(){
+ if(reduce||!matchMedia("(pointer:fine)").matches)return;
+ var box=document.createElement("div");box.id="trail";box.setAttribute("aria-hidden","true");document.body.appendChild(box);
+ var SVG='<svg viewBox="-8 -9 16 16"><ellipse cx="0" cy="3" rx="4.3" ry="3.5"/><ellipse cx="-4.7" cy="-2.2" rx="1.7" ry="2.2" transform="rotate(-20 -4.7 -2.2)"/><ellipse cx="-1.7" cy="-5" rx="1.7" ry="2.2"/><ellipse cx="1.7" cy="-5" rx="1.7" ry="2.2"/><ellipse cx="4.7" cy="-2.2" rx="1.7" ry="2.2" transform="rotate(20 4.7 -2.2)"/></svg>',lx=null,ly=0,lt=0,side=1;
+ document.addEventListener("pointermove",function(e){
+  if(e.pointerType!=="mouse"||dlg.open)return;
+  if(lx===null){lx=e.clientX;ly=e.clientY;lt=e.timeStamp;return}
+  var dx=e.clientX-lx,dy=e.clientY-ly;
+  if(Math.sqrt(dx*dx+dy*dy)<46||e.timeStamp-lt<90)return;
+  var a=Math.atan2(dy,dx),nx=-Math.sin(a)*7*side,ny=Math.cos(a)*7*side;
+  side=-side;lx=e.clientX;ly=e.clientY;lt=e.timeStamp;
+  while(box.children.length>=12)box.firstChild.remove();
+  var p=document.createElement("i");p.className="pp";
+  p.style.cssText="left:"+(e.clientX+nx)+"px;top:"+(e.clientY+ny)+"px;--r:"+(a*180/Math.PI+90)+"deg";
+  p.innerHTML=SVG;p.onanimationend=function(){p.remove()};box.appendChild(p)});
+})();
+$("count").textContent="Loading animals…";
+fetch("data.json").then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(d){mapPets(d);build()}).catch(function(){$("count").textContent="";$("grid").innerHTML='<div class="empty" style="grid-column:1/-1">Could not load data.json. If you opened index.html straight from your files, serve the folder with a local web server instead (for example, run <code>python3 -m http.server</code> in the project folder).</div>'});
 </script>
 </body>
 </html>
