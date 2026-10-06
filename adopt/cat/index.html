@@ -107,7 +107,7 @@ html,body,button,label,summary,.card,.chip,.cat,.btn,.ddm li,.ddb,.th,input[type
 input[type=search]{cursor:text}
 button.rel{background:none;border:0;padding:0;font:inherit;font-weight:600;color:var(--teal);text-decoration:none;transition:opacity .15s}
 button.rel:hover{opacity:.8}
-#trail{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}
+.trail{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}
 .pp{position:absolute;display:block;width:15px;height:15px;margin:-7px 0 0 -7px;color:#2a6cb0;opacity:0;transform:rotate(var(--r));animation:pawfade 1.5s ease-out forwards}
 .pp svg{display:block;width:100%;height:100%;fill:currentColor}
 @keyframes pawfade{0%{opacity:0;transform:rotate(var(--r)) scale(.5)}12%{opacity:.55;transform:rotate(var(--r)) scale(1)}100%{opacity:0;transform:rotate(var(--r)) scale(1)}}
@@ -267,10 +267,10 @@ $("attendBtn").onclick=function(){st.types={};st.traits={"Attending Saturday":tr
 (function(){var h=document.querySelector("header");function f(){var v=h.offsetHeight;document.body.style.paddingTop=v+"px";document.documentElement.style.setProperty("--hh",v+"px")}f();if(window.ResizeObserver)new ResizeObserver(f).observe(h);addEventListener("resize",f)})();
 (function(){
  if(reduce||!matchMedia("(pointer:fine)").matches)return;
- var box=document.createElement("div");box.id="trail";box.setAttribute("aria-hidden","true");document.body.appendChild(box);
+ var mk=function(h){var b=document.createElement("div");b.className="trail";b.setAttribute("aria-hidden","true");h.appendChild(b);return b},boxB=mk(document.body),boxD=mk(dlg);
  var SVG='<svg viewBox="-8 -9 16 16"><ellipse cx="0" cy="3" rx="4.3" ry="3.5"/><ellipse cx="-4.7" cy="-2.2" rx="1.7" ry="2.2" transform="rotate(-20 -4.7 -2.2)"/><ellipse cx="-1.7" cy="-5" rx="1.7" ry="2.2"/><ellipse cx="1.7" cy="-5" rx="1.7" ry="2.2"/><ellipse cx="4.7" cy="-2.2" rx="1.7" ry="2.2" transform="rotate(20 4.7 -2.2)"/></svg>',lx=null,ly=0,lt=0,side=1;
  document.addEventListener("pointermove",function(e){
-  if(e.pointerType!=="mouse"||dlg.open)return;
+  if(e.pointerType!=="mouse")return;var isOpen=dlg.open;if(isOpen&&dlg.getAnimations&&dlg.getAnimations().length)return;var box=isOpen?boxD:boxB;
   if(lx===null){lx=e.clientX;ly=e.clientY;lt=e.timeStamp;return}
   var dx=e.clientX-lx,dy=e.clientY-ly;
   if(Math.sqrt(dx*dx+dy*dy)<46||e.timeStamp-lt<90)return;
