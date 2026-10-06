@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Adopt Dog Template | Brian Crink</title>
+<title>Adopt a Dog Template | Brian Crink</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600&display=swap">
 <style>
 :root{color-scheme:light;--bg:#eef6fd;--surf:#fbfdff;--ink:#12304a;--mute:#47627c;--line:#cfe2f3;--teal:#2a6cb0;--gold:#f2b632;--onteal:#fff;box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -32,7 +32,7 @@ header .wrap{display:flex;flex-wrap:nowrap;align-items:center;justify-content:sp
 .intro p{margin:6px auto 0;color:var(--mute);max-width:60ch}
 .cats,.chips{max-width:420px;margin:0 auto}
 .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.cat b{font-weight:600;margin-left:3px;color:var(--mute)}
+.cat b,.chip b{font-weight:600;margin-left:3px;color:var(--mute)}.chip[aria-pressed=true] b{color:inherit}
 .cat[aria-pressed=true]{background:var(--teal);border-color:var(--teal);color:var(--onteal)}.cat[aria-pressed=true] b{color:inherit}
 .tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;padding:10px 0}
 .tools input[type=search],.tools select{border:1.5px solid var(--line);background:var(--surf);color:var(--ink);border-radius:10px;padding:8px 12px;font:inherit}
@@ -200,7 +200,7 @@ function build(){
  $("cats").innerHTML=TYPES.map(function(t){var n=PETS.filter(function(p){return p.type===t}).length;
   return'<button class="cat" data-t="'+t+'" aria-pressed="'+!!st.types[t]+'">'+(t==="Puppy"?"Puppies":t+"s")+' <b>'+n+'</b>'+'</button>'}).join("");
  $("chips").innerHTML=TRAITS.map(function(t){var n=PETS.filter(t[1]).length;
-  return'<button class="chip" data-c="'+t[0]+'" aria-pressed="'+!!st.traits[t[0]]+'"'+(n?'':' disabled')+'>'+t[0]+' ('+n+')</button>'}).join("");
+  return'<button class="chip" data-c="'+t[0]+'" aria-pressed="'+!!st.traits[t[0]]+'"'+(n?'':' disabled')+'>'+t[0]+' <b>'+n+'</b></button>'}).join("");
  $("grid").innerHTML=order().map(function(p){
   var h=hue(p);
   return'<button class="card" data-id="'+p.id+'" style="background:'+col(p)+'" aria-label="'+p.name+', '+p.type+'"><div class="ph" role="img" aria-label="Photo placeholder">'+p.emoji+'<small>photo</small></div>'+(p.group!=="Other"?'<span class="badge">'+p.group+'</span>':'')+'<div class="meta"><b>'+p.name+'</b><span>'+p.type+' · '+(p.age<1?Math.round(p.age*12)+' mo':p.age+' yr')+' · '+p.size+'</span><span>'+gw(p)+'</span></div></button>'}).join("");
