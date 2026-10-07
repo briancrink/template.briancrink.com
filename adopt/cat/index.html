@@ -79,6 +79,17 @@ main,footer{animation:fadeUp .7s ease both}
 @media(hover:hover){.card:hover{transform:translateY(-3px)}}
 dialog[open]{animation:pop .24s cubic-bezier(.2,.9,.3,1.15) both}
 dialog[open]::backdrop{animation:bk .24s ease both}
+.sizes{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.tagcloud{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;max-height:76px;overflow:hidden}
+.tagcloud.open{max-height:none}
+.tagcloud .chip{min-height:30px;padding:0 10px;font-size:.8rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}.tt{margin:8px 0 2px}
+.tag{border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:3px 11px;font-size:.82rem;line-height:1.3;transition:opacity .15s,border-color .15s}
+.tag:hover{opacity:.8;border-color:var(--teal)}
+#pawcur{position:fixed;left:0;top:0;width:32px;height:32px;margin:-16px 0 0 -16px;pointer-events:none;z-index:10000;opacity:0;transition:opacity .15s;will-change:transform}
+#pawcur svg{display:block}
+html.pawcur,html.pawcur *{cursor:none}
+html.pawcur input[type=search]{cursor:text}
 .empty{padding:30px;text-align:center;color:var(--mute)}
 section.block{padding:32px 0 8px}
 section.block h2{font-size:1.5rem;margin-bottom:12px}
@@ -94,7 +105,8 @@ details.test{margin-top:14px;background:var(--surf);border:1px dashed var(--line
 .bar a{flex:1;text-align:center;text-decoration:none;color:var(--ink);font-weight:600;padding:10px 0;border-radius:10px;background:var(--surf);border:1px solid var(--line)}
 .bar a.p{background:var(--teal);color:var(--onteal);border-color:var(--teal)}
 @media(min-width:760px){.nav{flex:0 0 auto;gap:8px}.nav .btn{padding:9px 18px;font-size:.95rem;white-space:nowrap}.logo{font-size:1.15rem}.logo span{max-width:none}.pawi{width:30px;height:30px}.cats,.chips{display:flex;flex-wrap:wrap;justify-content:center;max-width:none}.ways{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}}
-dialog{border:0;border-radius:18px;padding:0;max-width:520px;width:calc(100% - 24px);background:var(--surf);color:var(--ink)}
+dialog{position:fixed;inset:0;margin:auto;height:fit-content;max-height:calc(100% - 24px);overflow:auto;z-index:50;border:0;border-radius:18px;padding:0;max-width:520px;width:calc(100% - 24px);background:var(--surf);color:var(--ink)}
+#scrim{position:fixed;inset:0;z-index:49;background:rgba(10,25,24,.6);animation:bk .24s ease both}
 dialog::backdrop{background:rgba(10,25,24,.6)}
 .dbody{padding:16px 18px 18px}
 .dbody h2{font-size:1.8rem}
@@ -103,11 +115,11 @@ dialog::backdrop{background:rgba(10,25,24,.6)}
 .steps{margin:8px 0 14px;padding-left:20px;color:var(--mute)}
 .x{position:absolute;top:10px;right:10px;background:var(--surf);border:0;border-radius:999px;width:36px;height:36px;font-size:1.2rem}
 .ok{color:var(--teal);font-weight:600;margin-top:8px}
-html,body,button,label,summary,.card,.chip,.cat,.btn,.ddm li,.ddb,.th,input[type=checkbox]{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2230%22%20height%3D%2230%22%20viewBox%3D%220%200%2032%2032%22%20fill%3D%22%232a6cb0%22%20stroke%3D%22%23fff%22%20stroke-width%3D%220.9%22%20paint-order%3D%22stroke%22%3E%3Cg%20transform%3D%22translate%2810%2021%29%20rotate%28-20%29%22%3E%3Cellipse%20cx%3D%220%22%20cy%3D%223%22%20rx%3D%224.3%22%20ry%3D%223.5%22%2F%3E%3Cellipse%20cx%3D%22-4.7%22%20cy%3D%22-2.2%22%20rx%3D%221.7%22%20ry%3D%222.2%22%20transform%3D%22rotate%28-20%20-4.7%20-2.2%29%22%2F%3E%3Cellipse%20cx%3D%22-1.7%22%20cy%3D%22-5%22%20rx%3D%221.7%22%20ry%3D%222.2%22%2F%3E%3Cellipse%20cx%3D%221.7%22%20cy%3D%22-5%22%20rx%3D%221.7%22%20ry%3D%222.2%22%2F%3E%3Cellipse%20cx%3D%224.7%22%20cy%3D%22-2.2%22%20rx%3D%221.7%22%20ry%3D%222.2%22%20transform%3D%22rotate%2820%204.7%20-2.2%29%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%2822%2010%29%20rotate%2820%29%22%3E%3Cellipse%20cx%3D%220%22%20cy%3D%223%22%20rx%3D%224.3%22%20ry%3D%223.5%22%2F%3E%3Cellipse%20cx%3D%22-4.7%22%20cy%3D%22-2.2%22%20rx%3D%221.7%22%20ry%3D%222.2%22%20transform%3D%22rotate%28-20%20-4.7%20-2.2%29%22%2F%3E%3Cellipse%20cx%3D%22-1.7%22%20cy%3D%22-5%22%20rx%3D%221.7%22%20ry%3D%222.2%22%2F%3E%3Cellipse%20cx%3D%221.7%22%20cy%3D%22-5%22%20rx%3D%221.7%22%20ry%3D%222.2%22%2F%3E%3Cellipse%20cx%3D%224.7%22%20cy%3D%22-2.2%22%20rx%3D%221.7%22%20ry%3D%222.2%22%20transform%3D%22rotate%2820%204.7%20-2.2%29%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") 15 15,auto}
+html,body,button,label,summary,.card,.chip,.cat,.btn,.ddm li,.ddb,.th,input[type=checkbox]{cursor:var(--cur,url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2230%22%20height%3D%2230%22%20viewBox%3D%220%200%2032%2032%22%20fill%3D%22%232a6cb0%22%20stroke%3D%22%23fff%22%20stroke-width%3D%220.9%22%20paint-order%3D%22stroke%22%3E%3Cg%20transform%3D%22translate%2810%2021%29%20rotate%28-20%29%22%3E%3Cellipse%20cx%3D%220%22%20cy%3D%223%22%20rx%3D%224.3%22%20ry%3D%223.5%22%2F%3E%3Cellipse%20cx%3D%22-4.7%22%20cy%3D%22-2.2%22%20rx%3D%221.7%22%20ry%3D%222.2%22%20transform%3D%22rotate%28-20%20-4.7%20-2.2%29%22%2F%3E%3Cellipse%20cx%3D%22-1.7%22%20cy%3D%22-5%22%20rx%3D%221.7%22%20ry%3D%222.2%22%2F%3E%3Cellipse%20cx%3D%221.7%22%20cy%3D%22-5%22%20rx%3D%221.7%22%20ry%3D%222.2%22%2F%3E%3Cellipse%20cx%3D%224.7%22%20cy%3D%22-2.2%22%20rx%3D%221.7%22%20ry%3D%222.2%22%20transform%3D%22rotate%2820%204.7%20-2.2%29%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%2822%2010%29%20rotate%2820%29%22%3E%3Cellipse%20cx%3D%220%22%20cy%3D%223%22%20rx%3D%224.3%22%20ry%3D%223.5%22%2F%3E%3Cellipse%20cx%3D%22-4.7%22%20cy%3D%22-2.2%22%20rx%3D%221.7%22%20ry%3D%222.2%22%20transform%3D%22rotate%28-20%20-4.7%20-2.2%29%22%2F%3E%3Cellipse%20cx%3D%22-1.7%22%20cy%3D%22-5%22%20rx%3D%221.7%22%20ry%3D%222.2%22%2F%3E%3Cellipse%20cx%3D%221.7%22%20cy%3D%22-5%22%20rx%3D%221.7%22%20ry%3D%222.2%22%2F%3E%3Cellipse%20cx%3D%224.7%22%20cy%3D%22-2.2%22%20rx%3D%221.7%22%20ry%3D%222.2%22%20transform%3D%22rotate%2820%204.7%20-2.2%29%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") 15 15,auto)}
 input[type=search]{cursor:text}
 button.rel{background:none;border:0;padding:0;font:inherit;font-weight:600;color:var(--teal);text-decoration:none;transition:opacity .15s}
 button.rel:hover{opacity:.8}
-.trail{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}
+.trail{position:fixed;inset:0;width:100%;height:100%;margin:0;padding:0;border:0;background:none;pointer-events:none;z-index:9999;overflow:hidden}
 .pp{position:absolute;display:block;width:15px;height:15px;margin:-7px 0 0 -7px;color:#2a6cb0;opacity:0;transform:rotate(var(--r));animation:pawfade 1.5s ease-out forwards}
 .pp svg{display:block;width:100%;height:100%;fill:currentColor}
 @keyframes pawfade{0%{opacity:0;transform:rotate(var(--r)) scale(.5)}12%{opacity:.55;transform:rotate(var(--r)) scale(1)}100%{opacity:0;transform:rotate(var(--r)) scale(1)}}
@@ -125,8 +137,10 @@ button.rel:hover{opacity:.8}
 <div class="dd" id="dd"><button type="button" class="ddb" id="sort" aria-haspopup="listbox" aria-expanded="false"></button><ul class="ddm" id="ddm" role="listbox" aria-label="Sort order" hidden></ul></div></div>
 </div>
 <div class="fgroup"><div class="lbl">Animal type</div><div class="cats" id="cats" aria-label="Animal types"></div></div>
+<div class="fgroup"><div class="lbl">Size</div><div class="sizes" id="sizes" aria-label="Size"></div></div>
 <div class="fgroup"><div class="lbl">Traits</div><div class="chips" id="chips" aria-label="Traits"></div></div>
-<div class="status"><span id="count" aria-live="polite"></span>
+<div class="fgroup"><div class="lbl">Personality</div><div class="tagcloud" id="tagcloud" aria-label="Personality tags"></div><div style="text-align:center;margin-top:6px"><button type="button" class="link" id="tagmore"></button></div></div>
+<div class="status" id="statusbar"><span id="count" aria-live="polite"></span>
 <span><label><input type="checkbox" id="only"> Show only matches</label> <button class="link" id="clear">Show all</button></span></div>
 <div class="grid" id="grid"></div>
 
@@ -145,7 +159,7 @@ button.rel:hover{opacity:.8}
 <li>Every tile is the same size, and no pet is promoted.</li>
 <li>The default order is a random shuffle, reshuffled each visit. It never uses time in care, age, looks, or photo quality.</li>
 <li>Search and filters dim non-matches instead of removing them. "Show only matches" is the visitor's choice.</li>
-<li>Picking a type moves those animals to the front. Unselect it and the mixed order returns.</li>
+<li>Picking a type, size, trait, or tag moves matching animals to the front. Clear it and the mixed order returns.</li>
 <li>Newest, youngest, and A to Z sorts are chosen by the visitor, never by us.</li>
 <li>The numbers below cover the entire catalog and update as animals are added or adopted.</li>
 </ul>
@@ -153,7 +167,8 @@ button.rel:hover{opacity:.8}
 </main>
 <footer><div class="wrap">Cat Adoption Clinic is a mock nonprofit. All pets and details are sample data. For website integration, contact: hire@briancrink.com</div></footer>
 
-<dialog id="dlg" aria-label="Pet details"><div id="dc"></div></dialog>
+<div id="scrim" hidden></div>
+<dialog id="dlg" aria-label="Pet details" aria-modal="true"><div id="dc"></div></dialog>
 
 <script>
 var PETS=[],BY={},IMG="images/";
@@ -161,22 +176,29 @@ function src(n){return IMG+encodeURIComponent(n)}
 function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function mapPets(d){
  IMG=d.imageFolder||IMG;if(IMG.slice(-1)!=="/")IMG+="/";
- PETS=d.pets.map(function(r,i){var g=r.goodWith||{};return{id:i,slug:r.id,name:r.name,type:r.type,emoji:r.emoji,age:r.ageYears,size:r.size,days:r.daysInCare,senior:!!r.senior,bonded:!!r.bonded,special:!!r.special,kids:!!g.kids,dogs:!!g.dogs,cats:!!g.cats,fee:r.feeUsd,blurb:r.description,sat:!!r.attendingSaturday,images:r.images||[],siblings:r.siblings||[],parents:r.parents||[]}});
+ PETS=d.pets.map(function(r,i){var g=r.goodWith||{};return{id:i,slug:r.id,name:r.name,type:r.type,emoji:r.emoji,age:r.ageYears,size:r.size,days:r.daysInCare,senior:!!r.senior,bonded:!!r.bonded,special:!!r.special,kids:!!g.kids,dogs:!!g.dogs,cats:!!g.cats,fee:r.feeUsd,traits:r.traits||(r.description?[r.description]:[]),sat:!!r.attendingSaturday,images:r.images||[],siblings:r.siblings||[],parents:r.parents||[]}});
  BY={};PETS.forEach(function(p){p.group=p.senior?"Senior":p.bonded?"Bonded pair":p.special?"Special needs":"Other";BY[p.slug]=p});
 }
 var TYPES=["Dog","Puppy","Cat","Kitten","Rabbit","Guinea pig"];
 var TRAITS=[["Senior",function(p){return p.senior}],["Bonded pair",function(p){return p.bonded}],["Special needs",function(p){return p.special}],["Good with kids",function(p){return p.kids}],["Good with dogs",function(p){return p.dogs}],["Good with cats",function(p){return p.cats}],["Attending Saturday",function(p){return p.sat}]];
-var st={types:{},traits:{},q:"",only:false,sort:"mix"},views={};
+var st={types:{},traits:{},tags:{},sizes:{},q:"",only:false,sort:"mix"},views={},tagsOpen=false;
+function resetF(){st.types={};st.traits={};st.tags={};st.sizes={};st.q="";st.only=false;$("q").value="";$("only").checked=false}
 var seed=Math.floor(Math.random()*2147483647);
 function rnd(n){var t=(seed+n*1831565813)|0;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296}
 var $=function(id){return document.getElementById(id)};
 function hue(p){return(p.id*47)%360}
 var PAL=["#ffd9c7","#cdeedd","#dcd3f7","#cfe6fb","#fff0b8","#fbd3e1","#d5e8c5","#c4ecee"];function gw(p){var l=[];if(p.kids)l.push("kids");if(p.dogs)l.push("dogs");if(p.cats)l.push("cats");return l.length===3?"Good with everyone":l.length?"Good with "+l.join(", "):"Best in a quiet home"}
 function col(p){return PAL[p.id%PAL.length]}
-function match(p){
- var ts=Object.keys(st.types);if(ts.length&&!st.types[p.type])return false;
+function chipMatch(p){
+ if(Object.keys(st.types).length&&!st.types[p.type])return false;
+ if(Object.keys(st.sizes).length&&!st.sizes[p.size])return false;
  for(var i=0;i<TRAITS.length;i++)if(st.traits[TRAITS[i][0]]&&!TRAITS[i][1](p))return false;
- if(st.q){var s=(p.name+" "+p.blurb+" "+p.type).toLowerCase();if(s.indexOf(st.q.toLowerCase())<0)return false}
+ for(var k in st.tags)if(st.tags[k]&&p.traits.indexOf(k)<0)return false;
+ return true}
+function chipAny(){return Object.keys(st.types).length||Object.keys(st.sizes).length||Object.keys(st.traits).some(function(k){return st.traits[k]})||Object.keys(st.tags).length}
+function match(p){
+ if(!chipMatch(p))return false;
+ if(st.q){var s=(p.name+" "+p.traits.join(" ")+" "+p.type).toLowerCase();if(s.indexOf(st.q.toLowerCase())<0)return false}
  return true}
 function order(){
  var a=PETS.slice();
@@ -184,8 +206,7 @@ function order(){
  else if(st.sort==="new")a.sort(function(x,y){return x.days-y.days});
  else if(st.sort==="young")a.sort(function(x,y){return x.age-y.age});
  else a.sort(function(x,y){return x.name.localeCompare(y.name)});
- var sel=Object.keys(st.types);
- if(sel.length)a=a.filter(function(p){return st.types[p.type]}).concat(a.filter(function(p){return!st.types[p.type]}));
+ if(chipAny()){var mm=a.filter(chipMatch);a=mm.concat(a.filter(function(p){return!chipMatch(p)}))}
  return a}
 var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches,io=null;
 if(!reduce&&window.IntersectionObserver)io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;var row=[].slice.call($("grid").children).filter(function(c){return c.offsetParent&&c.offsetTop===el.offsetTop}).sort(function(a,b){return a.offsetLeft-b.offsetLeft});el.style.transitionDelay=Math.max(0,row.indexOf(el))*70+"ms";el.classList.add("in");io.unobserve(el);setTimeout(function(){el.style.transitionDelay=""},900)})},{threshold:.12});
@@ -195,12 +216,17 @@ function build(){
   return'<button class="cat" data-t="'+t+'" aria-pressed="'+!!st.types[t]+'">'+(t==="Puppy"?"Puppies":t+"s")+' <b>'+n+'</b>'+'</button>'}).join("");
  $("chips").innerHTML=TRAITS.map(function(t){var n=PETS.filter(t[1]).length;
   return'<button class="chip" data-c="'+t[0]+'" aria-pressed="'+!!st.traits[t[0]]+'"'+(n?'':' disabled')+'>'+t[0]+' <b>'+n+'</b></button>'}).join("");
+ $("sizes").innerHTML=["Small","Medium","Large"].map(function(z){var n=PETS.filter(function(p){return p.size===z}).length;return'<button class="chip" data-size="'+z+'" aria-pressed="'+!!st.sizes[z]+'"'+(n?'':' disabled')+'>'+z+' <b>'+n+'</b></button>'}).join("");
+ var all={};PETS.forEach(function(p){p.traits.forEach(function(t){all[t]=1})});
+ if(Object.keys(st.tags).length)tagsOpen=true;
+ $("tagcloud").innerHTML=Object.keys(all).sort(function(a,b){return a.localeCompare(b)}).map(function(t){return'<button class="chip" data-tag="'+esc(t)+'" aria-pressed="'+!!st.tags[t]+'">'+esc(t)+'</button>'}).join("");
+ tagUi();
  $("grid").innerHTML=order().map(function(p){
   var h=hue(p);
   return'<button class="card" data-id="'+p.id+'" style="background:'+col(p)+'" aria-label="'+p.name+', '+p.type+'"><div class="ph"><span aria-hidden="true">'+p.emoji+'</span>'+(p.images[0]?'<img src="'+src(p.images[0])+'" alt="Photo of '+esc(p.name)+'" loading="lazy" onerror="this.remove()">':'')+'</div>'+(p.group!=="Other"?'<span class="badge">'+p.group+'</span>':'')+'<div class="meta"><b>'+p.name+'</b><span>'+p.type+' · '+(p.age<1?Math.round(p.age*12)+' mo':p.age+' yr')+' · '+p.size+'</span><span>'+gw(p)+'</span></div></button>'}).join("");
  reveal();paint()}
 function paint(){
- var any=Object.keys(st.types).length||Object.keys(st.traits).some(function(k){return st.traits[k]})||st.q;
+ var any=chipAny()||st.q;
  var n=0;
  document.querySelectorAll(".card").forEach(function(c){var m=match(PETS[c.dataset.id]);if(m)n++;
   c.classList.toggle("dim",!!any&&!m&&!st.only);c.classList.toggle("hide",!!any&&!m&&st.only)});
@@ -217,6 +243,16 @@ function stats(){
  var rows=g.map(function(k){var c=PETS.filter(function(p){return p.group===k}).length;
   return"<tr><td>"+k+"</td><td>"+pc(c)+"</td><td>"+(views[k]||0)+"</td></tr>"}).join("");
  $("stats").innerHTML="<p><b>"+N+" animals in the catalog.</b></p><p><b>By type:</b> "+ty+"</p><p><b>By trait:</b> "+tr+"</p><table><tr><th>Group</th><th>Share of catalog</th><th>Detail opens this visit</th></tr>"+rows+"</table>"}
+function tagUi(){var c=$("tagcloud");c.classList.toggle("open",tagsOpen);$("tagmore").textContent=tagsOpen?"Show fewer":"Show all "+c.children.length}
+function refocus(a,v){var l=document.querySelectorAll("["+a+"]");for(var i=0;i<l.length;i++)if(l[i].getAttribute(a)===v){l[i].focus();break}}
+function applyTag(kind,val){
+ resetF();
+ if(kind==="type")st.types[val]=1;
+ else if(kind==="size")st.sizes[val]=1;
+ else if(kind==="good")st.traits["Good with "+val]=true;
+ else if(kind==="tag"){st.tags[val]=1;tagsOpen=true}
+ dlg.close();build();
+ $("statusbar").scrollIntoView({behavior:reduce?"auto":"smooth"})}
 function gallery(p){
  var im=p.images||[];
  var main='<div class="ph" style="aspect-ratio:16/9;font-size:5rem;background:'+col(p)+'"><span aria-hidden="true">'+p.emoji+'</span>'+(im.length?'<img id="mainimg" src="'+src(im[0])+'" alt="Photo of '+esc(p.name)+'" onerror="this.remove()">':'<small>photo / video</small>')+'</div>';
@@ -228,21 +264,32 @@ function rel(p,kind){
  list=list.filter(function(v,i){return list.indexOf(v)===i&&v!==p.slug});
  return list.length?list.map(function(v){var q=BY[v];return q?'<button type="button" class="rel" data-pet="'+q.id+'">'+esc(q.name)+'</button>':esc(v)}).join(", "):""}
 function relRow(p,kind,label){var h=rel(p,kind);return h?'<div><span>'+label+'</span>'+h+'</div>':''}
+function tag(kind,val,label){return'<button type="button" class="tag" data-ftype="'+kind+'" data-fval="'+esc(val)+'">'+esc(label||val)+'</button>'}
 function open(id){
- var p=PETS[id],h=hue(p);views[p.group]=(views[p.group]||0)+1;
- $("dc").innerHTML=gallery(p)+'<button class="x" aria-label="Close" onclick="dlg.close()">×</button><div class="dbody"><h2>'+p.name+'</h2><p style="margin:6px 0 0;color:var(--mute)">'+p.blurb+'</p><div class="facts"><div><span>Type</span>'+p.type+'</div><div><span>Age</span>'+p.age+' yr</div><div><span>Size</span>'+p.size+'</div><div><span>Adoption fee</span>$'+p.fee+' (spayed/neutered, vaccinated)</div><div><span>Good with</span>'+[p.kids?"kids":"",p.dogs?"dogs":"",p.cats?"cats":""].filter(Boolean).join(", ")+(p.kids||p.dogs||p.cats?"":"adults only")+'</div><div><span>At Saturday event</span>'+(p.sat?"Yes":"No, visit by appointment")+'</div>'+relRow(p,"siblings","Siblings")+relRow(p,"parents","Parents")+'</div><b>Next steps</b><ol class="steps"><li>Send a short application.</li><li>Meet at adoption day or with the foster.</li><li>Sign and take '+p.name+' home.</li></ol><button class="btn" id="apply">Apply to adopt '+p.name+'</button><div id="ok"></div></div>';
+ var p=PETS[id];views[p.group]=(views[p.group]||0)+1;
+ var gl=[];if(p.kids)gl.push("kids");if(p.dogs)gl.push("dogs");if(p.cats)gl.push("cats");
+ var good=gl.length?gl.map(function(g){return tag("good",g,g.charAt(0).toUpperCase()+g.slice(1))}).join(""):"Adults only";
+ $("dc").innerHTML=gallery(p)+'<button class="x" aria-label="Close" onclick="dlg.close()">×</button><div class="dbody"><h2>'+esc(p.name)+'</h2>'+(p.traits.length?'<div class="tags tt">'+p.traits.map(function(t){return tag("tag",t)}).join("")+'</div>':'')+'<div class="facts"><div><span>Type</span><div class="tags">'+tag("type",p.type)+'</div></div><div><span>Age</span>'+p.age+' yr</div><div><span>Size</span><div class="tags">'+tag("size",p.size)+'</div></div><div><span>Adoption fee</span>$'+p.fee+' (spayed/neutered, vaccinated)</div><div><span>Good with</span><div class="tags">'+good+'</div></div><div><span>At Saturday event</span>'+(p.sat?"Yes":"No, visit by appointment")+'</div>'+relRow(p,"siblings","Siblings")+relRow(p,"parents","Parents")+'</div><b>Next steps</b><ol class="steps"><li>Send a short application.</li><li>Meet at adoption day or with the foster.</li><li>Sign and take '+esc(p.name)+' home.</li></ol><button class="btn" id="apply">Apply to adopt '+esc(p.name)+'</button><div id="ok"></div></div>';
  $("apply").onclick=function(){$("ok").innerHTML='<p class="ok">Template only: this would open the short application form.</p>'};
- dlg.scrollTop=0;if(!dlg.open)dlg.showModal();stats()}
-var dlg=$("dlg");
+ dlg.scrollTop=0;openDlg();stats()}
+var dlg=$("dlg"),opener=null;
+function setInert(on){["header","main","footer"].forEach(function(t){var el=document.querySelector(t);if(el)el.inert=on})}
+function openDlg(){if(dlg.open)return;opener=document.activeElement;dlg.show();$("scrim").hidden=false;setInert(true)}
+dlg.addEventListener("close",function(){$("scrim").hidden=true;setInert(false);if(opener&&document.body.contains(opener))opener.focus();opener=null});
+$("scrim").onclick=function(){dlg.close()};
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&dlg.open)dlg.close()});
 dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
 document.addEventListener("click",function(e){
  var c=e.target.closest("[data-go]");if(c){var el=$(c.dataset.go);if(el)el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});return}
+ c=e.target.closest("[data-ftype]");if(c){applyTag(c.dataset.ftype,c.dataset.fval);return}
+ c=e.target.closest("[data-size]");if(c){var z=c.dataset.size;st.sizes[z]?delete st.sizes[z]:st.sizes[z]=1;build();refocus("data-size",z);return}
+ c=e.target.closest("[data-tag]");if(c){var g=c.dataset.tag;st.tags[g]?delete st.tags[g]:st.tags[g]=1;build();refocus("data-tag",g);return}
  c=e.target.closest("[data-t]");if(c){var t=c.dataset.t;st.types[t]?delete st.types[t]:st.types[t]=1;build();var tb=document.querySelector('[data-t="'+t+'"]');if(tb)tb.focus();return}
- c=e.target.closest("[data-c]");if(c){var k=c.dataset.c;st.traits[k]=!st.traits[k];c.setAttribute("aria-pressed",!!st.traits[k]);return paint()}
+ c=e.target.closest("[data-c]");if(c){var k=c.dataset.c;st.traits[k]=!st.traits[k];build();refocus("data-c",k);return}
  c=e.target.closest("[data-pet]");if(c)return open(+c.dataset.pet);
  c=e.target.closest("[data-img]");if(c){var mi=$("mainimg");if(!mi){mi=document.createElement("img");mi.id="mainimg";mi.alt="";mi.onerror=function(){mi.remove()};document.querySelector("#dc .ph").appendChild(mi)}mi.src=src(c.dataset.img);c.parentNode.querySelectorAll(".th").forEach(function(x){x.setAttribute("aria-current",x===c)});return}
  c=e.target.closest(".card");if(c)return open(+c.dataset.id);
- c=e.target.closest("[data-form]");if(c){$("dc").innerHTML='<div class="dbody"><h2>'+c.dataset.form+'</h2><p style="color:var(--mute)">Template placeholder. The real form would open here.</p><button class="btn" onclick="dlg.close()">Got it</button></div>';dlg.showModal();return}
+ c=e.target.closest("[data-form]");if(c){$("dc").innerHTML='<div class="dbody"><h2>'+c.dataset.form+'</h2><p style="color:var(--mute)">Template placeholder. The real form would open here.</p><button class="btn" onclick="dlg.close()">Got it</button></div>';openDlg();return}
  if(e.target.closest(".amts .chip")){var b=e.target.closest(".chip");b.parentNode.querySelectorAll(".chip").forEach(function(x){x.setAttribute("aria-pressed",x===b)})}
 });
 $("q").oninput=function(e){st.q=e.target.value.trim();paint()};
@@ -262,15 +309,37 @@ var SORTS=[["mix","Meet everyone"],["new","Newest arrivals"],["young","Youngest 
  lab();
 })();
 $("only").onchange=function(e){st.only=e.target.checked;paint()};
-$("clear").onclick=function(){st.types={};st.traits={};st.q="";st.only=false;$("q").value="";$("only").checked=false;build()};
-$("attendBtn").onclick=function(){st.types={};st.traits={"Attending Saturday":true};build();$("cats").scrollIntoView()};
+$("clear").onclick=function(){resetF();build()};
+$("tagmore").onclick=function(){tagsOpen=!tagsOpen;tagUi()};
+$("attendBtn").onclick=function(){resetF();st.traits["Attending Saturday"]=true;build();$("cats").scrollIntoView()};
 (function(){var h=document.querySelector("header");function f(){var v=h.offsetHeight;document.body.style.paddingTop=v+"px";document.documentElement.style.setProperty("--hh",v+"px")}f();if(window.ResizeObserver)new ResizeObserver(f).observe(h);addEventListener("resize",f)})();
 (function(){
- if(reduce||!matchMedia("(pointer:fine)").matches)return;
- var mk=function(h){var b=document.createElement("div");b.className="trail";b.setAttribute("aria-hidden","true");h.appendChild(b);return b},boxB=mk(document.body),boxD=mk(dlg);
- var SVG='<svg viewBox="-8 -9 16 16"><ellipse cx="0" cy="3" rx="4.3" ry="3.5"/><ellipse cx="-4.7" cy="-2.2" rx="1.7" ry="2.2" transform="rotate(-20 -4.7 -2.2)"/><ellipse cx="-1.7" cy="-5" rx="1.7" ry="2.2"/><ellipse cx="1.7" cy="-5" rx="1.7" ry="2.2"/><ellipse cx="4.7" cy="-2.2" rx="1.7" ry="2.2" transform="rotate(20 4.7 -2.2)"/></svg>',lx=null,ly=0,lt=0,side=1;
+ if(!matchMedia("(pointer:fine)").matches)return;
+ var PAWS='<ellipse cx="0" cy="3" rx="4.3" ry="3.5"/><ellipse cx="-4.7" cy="-2.2" rx="1.7" ry="2.2" transform="rotate(-20 -4.7 -2.2)"/><ellipse cx="-1.7" cy="-5" rx="1.7" ry="2.2"/><ellipse cx="1.7" cy="-5" rx="1.7" ry="2.2"/><ellipse cx="4.7" cy="-2.2" rx="1.7" ry="2.2" transform="rotate(20 4.7 -2.2)"/>';
+ var root=document.documentElement,pc=document.createElement("div");
+ pc.id="pawcur";pc.setAttribute("aria-hidden","true");
+ pc.innerHTML='<svg viewBox="-2 -2 36 36" width="32" height="32" fill="#2a6cb0" stroke="#fff" stroke-width=".9" paint-order="stroke"><g transform="translate(10 21) rotate(-20)">'+PAWS+'</g><g transform="translate(22 10) rotate(20)">'+PAWS+'</g></svg>';
+ document.body.appendChild(pc);root.classList.add("pawcur");
+ var px=0,py=0,ang=0,tgt=0,ax=null,ay=0,raf=0;
+ function frame(){
+  raf=0;var d=tgt-ang;
+  ang=reduce||Math.abs(d)<.1?tgt:ang+d*.16;
+  pc.style.transform="translate3d("+px+"px,"+py+"px,0) rotate("+ang+"deg)";
+  if(ang!==tgt)raf=requestAnimationFrame(frame)}
+ function aim(e){
+  px=e.clientX;py=e.clientY;
+  pc.style.opacity=(e.target.closest&&e.target.closest("input[type=search]"))?0:1;
+  if(ax===null){ax=px;ay=py}
+  else{var dx=px-ax,dy=py-ay;
+   if(dx*dx+dy*dy>=36){var a=Math.atan2(dy,dx)*180/Math.PI+90;tgt=ang+((((a-ang+180)%360)+360)%360-180);ax=px;ay=py}}
+  if(!raf)raf=requestAnimationFrame(frame)}
+ root.addEventListener("mouseleave",function(){pc.style.opacity=0});
+ var box=document.createElement("div");box.className="trail";box.setAttribute("aria-hidden","true");document.body.appendChild(box);
+ var SVG='<svg viewBox="-8 -9 16 16">'+PAWS+'</svg>',lx=null,ly=0,lt=0,side=1;
  document.addEventListener("pointermove",function(e){
-  if(e.pointerType!=="mouse")return;var isOpen=dlg.open;if(isOpen&&dlg.getAnimations&&dlg.getAnimations().length)return;var box=isOpen?boxD:boxB;
+  if(e.pointerType!=="mouse")return;
+  aim(e);
+  if(reduce)return;
   if(lx===null){lx=e.clientX;ly=e.clientY;lt=e.timeStamp;return}
   var dx=e.clientX-lx,dy=e.clientY-ly;
   if(Math.sqrt(dx*dx+dy*dy)<46||e.timeStamp-lt<90)return;

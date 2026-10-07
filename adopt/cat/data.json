@@ -19,7 +19,12 @@
         "cats": true
       },
       "feeUsd": 150,
-      "description": "Mellow couch companion. Walks slowly, loves ear scratches.",
+      "traits": [
+        "Mellow",
+        "Couch companion",
+        "Walks slowly",
+        "Loves ear scratches"
+      ],
       "attendingSaturday": true,
       "images": [
         "dog 1-1.png"
@@ -44,7 +49,11 @@
         "cats": true
       },
       "feeUsd": 95,
-      "description": "Quiet lap cat. Needs a calm home.",
+      "traits": [
+        "Quiet",
+        "Lap cat",
+        "Needs a calm home"
+      ],
       "attendingSaturday": true,
       "images": [
         "cat 1-1.png",
@@ -71,7 +80,11 @@
         "cats": true
       },
       "feeUsd": 125,
-      "description": "Bold and silly. Adopts best with a sibling.",
+      "traits": [
+        "Bold",
+        "Silly",
+        "Adopts best with a sibling"
+      ],
       "attendingSaturday": true,
       "images": [
         "cat 2-1.png",
@@ -104,7 +117,10 @@
         "cats": true
       },
       "feeUsd": 125,
-      "description": "Bonded with Mochi. Adopted together.",
+      "traits": [
+        "Bonded with Mochi",
+        "Adopt together"
+      ],
       "attendingSaturday": false,
       "images": [
         "cat 3-1.png",
@@ -136,7 +152,11 @@
         "cats": true
       },
       "feeUsd": 200,
-      "description": "Energetic hiker. Needs a fenced yard.",
+      "traits": [
+        "Energetic",
+        "Hiker",
+        "Needs a fenced yard"
+      ],
       "attendingSaturday": true,
       "images": [
         "dog 2-1.png"
@@ -161,7 +181,11 @@
         "cats": true
       },
       "feeUsd": 60,
-      "description": "Litter trained. Loves greens and quiet.",
+      "traits": [
+        "Litter trained",
+        "Loves greens",
+        "Loves quiet"
+      ],
       "attendingSaturday": false,
       "images": [
         "rabbit 1-1.png"
@@ -186,7 +210,10 @@
         "cats": true
       },
       "feeUsd": 250,
-      "description": "Goofy, learning leash manners.",
+      "traits": [
+        "Goofy",
+        "Learning leash manners"
+      ],
       "attendingSaturday": true,
       "images": [
         "dog 3-1.png"
@@ -211,7 +238,11 @@
         "cats": true
       },
       "feeUsd": 50,
-      "description": "Kidney diet, easy to manage. Deeply affectionate.",
+      "traits": [
+        "Kidney diet",
+        "Easy to manage",
+        "Deeply affectionate"
+      ],
       "attendingSaturday": true,
       "images": [
         "cat 4-1.png"
@@ -236,7 +267,11 @@
         "cats": true
       },
       "feeUsd": 150,
-      "description": "Calm with kids and cats. Knows sit and paw.",
+      "traits": [
+        "Calm",
+        "Knows sit",
+        "Knows paw"
+      ],
       "attendingSaturday": false,
       "images": [
         "dog 4-1.png"
@@ -261,7 +296,10 @@
         "cats": true
       },
       "feeUsd": 40,
-      "description": "Bonded with Penny. Wheeks at snack time.",
+      "traits": [
+        "Bonded with Penny",
+        "Wheeks at snack time"
+      ],
       "attendingSaturday": false,
       "images": [
         "guinea pig 1-1.png"
@@ -286,7 +324,10 @@
         "cats": true
       },
       "feeUsd": 40,
-      "description": "Bonded with Tilly. Adopted together.",
+      "traits": [
+        "Bonded with Tilly",
+        "Adopt together"
+      ],
       "attendingSaturday": false,
       "images": [
         "guinea pig 2-1.png"
@@ -311,7 +352,11 @@
         "cats": true
       },
       "feeUsd": 95,
-      "description": "Chatty, social, follows you room to room.",
+      "traits": [
+        "Chatty",
+        "Social",
+        "Follows you room to room"
+      ],
       "attendingSaturday": true,
       "images": [
         "cat 5-1.png"
@@ -336,7 +381,11 @@
         "cats": true
       },
       "feeUsd": 100,
-      "description": "Tiny and gray-muzzled. Needs daily meds.",
+      "traits": [
+        "Tiny",
+        "Gray-muzzled",
+        "Needs daily meds"
+      ],
       "attendingSaturday": true,
       "images": [
         "dog 5-1.png"
@@ -361,7 +410,11 @@
         "cats": false
       },
       "feeUsd": 95,
-      "description": "Shy at first, then velvet. Best with adults.",
+      "traits": [
+        "Shy at first",
+        "Velvety",
+        "Best with adults"
+      ],
       "attendingSaturday": false,
       "images": [
         "cat 6-1.png"
@@ -386,7 +439,10 @@
         "cats": true
       },
       "feeUsd": 200,
-      "description": "Goofy giant. Needs a dog-savvy home.",
+      "traits": [
+        "Goofy",
+        "Needs a dog-savvy home"
+      ],
       "attendingSaturday": true,
       "images": [
         "dog 6-1.png"
@@ -411,7 +467,10 @@
         "cats": true
       },
       "feeUsd": 125,
-      "description": "Playful teen. Loves feather wands.",
+      "traits": [
+        "Playful",
+        "Loves feather wands"
+      ],
       "attendingSaturday": false,
       "images": [
         "cat 7-1.png"
@@ -436,7 +495,10 @@
         "cats": false
       },
       "feeUsd": 60,
-      "description": "Gentle. Prefers floor-level cuddles.",
+      "traits": [
+        "Gentle",
+        "Prefers floor-level cuddles"
+      ],
       "attendingSaturday": false,
       "images": [
         "rabbit 2-1.png"
@@ -461,7 +523,11 @@
         "cats": true
       },
       "feeUsd": 150,
-      "description": "Deaf, reads hand signals. Eager to learn.",
+      "traits": [
+        "Deaf",
+        "Reads hand signals",
+        "Eager to learn"
+      ],
       "attendingSaturday": false,
       "images": [
         "dog 7-1.png"
@@ -486,7 +552,10 @@
         "cats": true
       },
       "feeUsd": 50,
-      "description": "Sunbather and window watcher.",
+      "traits": [
+        "Sunbather",
+        "Window watcher"
+      ],
       "attendingSaturday": false,
       "images": [
         "cat 8-1.png"
@@ -511,7 +580,11 @@
         "cats": true
       },
       "feeUsd": 175,
-      "description": "Smart, loves puzzle toys. Great with cats.",
+      "traits": [
+        "Smart",
+        "Loves puzzle toys",
+        "Great with cats"
+      ],
       "attendingSaturday": true,
       "images": [
         "dog 8-1.png"
@@ -536,7 +609,10 @@
         "cats": true
       },
       "feeUsd": 250,
-      "description": "Curious and snuggly.",
+      "traits": [
+        "Curious",
+        "Snuggly"
+      ],
       "attendingSaturday": false,
       "images": [
         "dog 9-1.png"
@@ -561,7 +637,11 @@
         "cats": true
       },
       "feeUsd": 95,
-      "description": "FIV+, healthy. Lives happily with other cats.",
+      "traits": [
+        "FIV+",
+        "Healthy",
+        "Lives happily with other cats"
+      ],
       "attendingSaturday": false,
       "images": [
         "cat 9-1.png"
@@ -586,7 +666,10 @@
         "cats": true
       },
       "feeUsd": 125,
-      "description": "Calm kitten, handles visitors well.",
+      "traits": [
+        "Calm",
+        "Handles visitors well"
+      ],
       "attendingSaturday": false,
       "images": [
         "cat 10-1.png"
@@ -611,7 +694,10 @@
         "cats": true
       },
       "feeUsd": 200,
-      "description": "Social, loves other dogs.",
+      "traits": [
+        "Social",
+        "Loves other dogs"
+      ],
       "attendingSaturday": true,
       "images": [
         "dog 10-1.png"
