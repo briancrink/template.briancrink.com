@@ -11,7 +11,7 @@
         "Puppy",
         "Cat",
         "Kitten",
-        "Rabbit",
+        "Bunny",
         "Guinea pig"
       ]
     },
@@ -250,7 +250,7 @@
     {
       "id": "clover",
       "name": "Clover",
-      "type": "Rabbit",
+      "type": "Bunny",
       "emoji": "🐇",
       "ageYears": 2,
       "size": "Small",
@@ -277,7 +277,10 @@
       },
       "attendingSaturday": false,
       "images": [
-        "rabbit 1-1.png"
+        "bunny 1-1.png",
+        "bunny 1-2.png",
+        "bunny 1-3.png",
+        "bunny 1-4.png"
       ],
       "siblings": [],
       "parents": []
@@ -602,7 +605,7 @@
     {
       "id": "daisy",
       "name": "Daisy",
-      "type": "Rabbit",
+      "type": "Bunny",
       "emoji": "🐇",
       "ageYears": 4,
       "size": "Small",
@@ -626,7 +629,9 @@
       },
       "attendingSaturday": false,
       "images": [
-        "rabbit 2-1.png"
+        "bunny 2-1.png",
+        "bunny 2-2.png",
+        "bunny 2-3.png"
       ],
       "siblings": [],
       "parents": []

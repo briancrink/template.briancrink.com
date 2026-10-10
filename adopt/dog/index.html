@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Adopt a Dog Template | Brian Crink</title>
+<title>Adopt a Cat Template | Brian Crink</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600&display=swap">
 <style>
 :root{color-scheme:light;--bg:#eef6fd;--surf:#fbfdff;--ink:#12304a;--mute:#47627c;--line:#cfe2f3;--teal:#2a6cb0;--gold:#f2b632;--onteal:#fff;box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -232,19 +232,52 @@ input[type=search]:focus-visible,.ddb:focus-visible{outline:none;border-color:va
 </ul>
 <div id="stats"></div></details>
 </main>
-<footer><div class="wrap">Dog Adoption Clinic is a mock nonprofit. All pets and details are sample data. For website integration, contact: hire@briancrink.com</div></footer>
+<footer><div class="wrap">Cat Adoption Clinic is a mock nonprofit. All pets and details are sample data. For website integration, contact: hire@briancrink.com</div></footer>
 
 <div id="scrim" hidden></div>
 <dialog id="dlg" aria-label="Pet details" aria-modal="true"><div id="dc"></div></dialog>
 
 <script>
-var PETS=[],BY={},IMG="images/",GROUPS=[],GN={};
+/* ============================================================
+   SITE VERSION: set this ONE value to "pet", "cat", or "dog".
+   Copy this file into /adopt/pet, /adopt/cat, /adopt/dog and change only this line.
+   All three read the same data.json (in the folder above them) and the same image folder.
+   ============================================================ */
+var SITE_VERSION="dog";
+var SITES={
+ pet:{name:"Pet Adoption Clinic",title:"Adopt a Pet Template | Brian Crink",h1:"Find your Companion",search:"Search pets",noun:"animals",types:null,
+  foster:"Give a pet a home until the right family appears. Supplies and vet care covered.",
+  stray:"Answer a few questions and we'll point you to a trap loan, a spay/neuter slot, or a foster."},
+ cat:{name:"Cat Adoption Clinic",title:"Adopt a Cat Template | Brian Crink",h1:"Find your Feline Companion",search:"Search cats",noun:"cats",types:["Cat","Kitten"],
+  foster:"Give a cat a home until the right family appears. Supplies and vet care covered.",
+  stray:"Found a stray or feral cat? Answer a few questions and we'll point you to a trap loan, a spay/neuter slot, or a foster."},
+ dog:{name:"Dog Adoption Clinic",title:"Adopt a Dog Template | Brian Crink",h1:"Find your Canine Companion",search:"Search dogs",noun:"dogs",types:["Dog","Puppy"],
+  foster:"Give a dog a home until the right family appears. Supplies and vet care covered.",
+  stray:"Found a stray dog? Answer a few questions and we'll point you to a transport volunteer, a vet visit, or a foster."}
+};
+var SITE=SITES[SITE_VERSION]||SITES.pet;
+/* data.json lives in the folder ABOVE /pet, /cat, /dog (e.g. /adopt/data.json). Works with or without a trailing slash. */
+var DATA_URL=(function(){var p=location.pathname.replace(/index\.html$/,"").replace(/\/+$/,"").split("/");if(p[p.length-1]===SITE_VERSION)p.pop();return p.join("/")+"/data.json"})();
+function applySite(){
+ var g=function(q){return document.querySelector(q)};
+ document.title=SITE.title;
+ g(".logo>span").textContent=SITE.name;
+ g(".intro h1").textContent=SITE.h1;
+ g("#q").placeholder=SITE.search;
+ g("#foster p").textContent=SITE.foster;
+ g("#stray p").textContent=SITE.stray;
+ var f=g("footer .wrap");f.innerHTML=f.innerHTML.replace(/^.*? is a mock nonprofit/,SITE.name+" is a mock nonprofit");
+ var li=document.querySelectorAll("#fair li");
+ if(li[0])li[0].textContent="All "+SITE.noun+" are on one page. No pages, no featured slots, no paid placement.";
+ if(li[5])li[5].textContent="The numbers below cover the entire catalog and update as "+SITE.noun+" are added or adopted."}
+var PETS=[],BY={},ALL={},IMG="images/",GROUPS=[],GN={};
 function src(n){return IMG+encodeURIComponent(n)}
 function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function mapPets(d){
- IMG=d.imageFolder||IMG;if(IMG.slice(-1)!=="/")IMG+="/";
+ IMG=DATA_URL.replace(/[^\/]*$/,"")+(d.imageFolder||"image/");if(IMG.slice(-1)!=="/")IMG+="/";
  GROUPS=d.tagGroups||[];
- PETS=d.pets.map(function(r,i){var g=r.goodWith||{},t={};
+ ALL={};d.pets.forEach(function(r){ALL[r.id]=1});
+ PETS=d.pets.filter(function(r){return!SITE.types||SITE.types.indexOf(r.type)>-1}).map(function(r,i){var g=r.goodWith||{},t={};
   function add(k,v){(t[k]=t[k]||[]);if(t[k].indexOf(v)<0)t[k].push(v)}
   add("type",r.type);
   add("age",r.ageYears<1?"Baby":r.senior?"Senior":r.ageYears<3?"Young":"Adult");
@@ -299,8 +332,8 @@ function paint(){
  var n=0;
  document.querySelectorAll(".card").forEach(function(c){var m=match(PETS[c.dataset.id]);if(m)n++;
   c.classList.toggle("dim",!!any&&!m&&!st.only);c.classList.toggle("hide",!!any&&!m&&st.only)});
- $("count").textContent=any?n+" match of "+PETS.length+" animals.":"Showing all "+PETS.length+" animals.";
- if(st.only&&any)$("count").textContent=n+" match of "+PETS.length+" animals. "+(PETS.length-n)+" hidden.";
+ $("count").textContent=any?n+" match of "+PETS.length+" "+SITE.noun+".":"Showing all "+PETS.length+" "+SITE.noun+".";
+ if(st.only&&any)$("count").textContent=n+" match of "+PETS.length+" "+SITE.noun+". "+(PETS.length-n)+" hidden.";
  $("clear").style.visibility=any||st.only?"visible":"hidden";
  $("active").innerHTML=Object.keys(st.sel).map(function(n){return'<button type="button" class="ac" data-rm="'+esc(n)+'" aria-label="Remove filter '+esc(n)+'">'+esc(n)+' <i aria-hidden="true">×</i></button>'}).join("");
  stats()}
@@ -311,7 +344,7 @@ function stats(){
  var g=["Senior","Bonded pair","Special needs","Other"];
  var rows=g.map(function(k){var c=PETS.filter(function(p){return p.group===k}).length;
   return"<tr><td>"+k+"</td><td>"+pc(c)+"</td><td>"+(views[k]||0)+"</td></tr>"}).join("");
- $("stats").innerHTML="<p><b>"+N+" animals in the catalog.</b></p>"+lines+"<table><tr><th>Group</th><th>Share of catalog</th><th>Detail opens this visit</th></tr>"+rows+"</table>"}
+ $("stats").innerHTML="<p><b>"+N+" "+SITE.noun+" in the catalog.</b></p>"+lines+"<table><tr><th>Group</th><th>Share of catalog</th><th>Detail opens this visit</th></tr>"+rows+"</table>"}
 var canHover=matchMedia("(hover:hover)").matches,rt=0;
 function groupNames(g){var seen={};PETS.forEach(function(p){(p.tags[g.key]||[]).forEach(function(v){seen[v]=(seen[v]||0)+1})});
  var names=Object.keys(seen),o=g.order||[];
@@ -419,7 +452,7 @@ function rel(p,kind){
  var list=(p[kind]||[]).slice();
  if(kind==="siblings")PETS.forEach(function(q){if(q!==p&&q.siblings.indexOf(p.slug)>-1&&list.indexOf(q.slug)<0)list.push(q.slug)});
  list=list.filter(function(v,i){return list.indexOf(v)===i&&v!==p.slug});
- return list.length?list.map(function(v){var q=BY[v];return q?'<button type="button" class="rel" data-pet="'+q.id+'">'+esc(q.name)+'</button>':esc(v)}).join(", "):""}
+ return list.map(function(v){var q=BY[v];return q?'<button type="button" class="rel" data-pet="'+q.id+'">'+esc(q.name)+'</button>':(ALL[v]?"":esc(v))}).filter(Boolean).join(", ")}
 function relRow(p,kind,label){var h=rel(p,kind);return h?'<div><span>'+label+'</span>'+h+'</div>':''}
 function tag(v){return'<button type="button" class="tag" data-ftag="'+esc(v)+'">'+esc(v)+'</button>'}
 function open(id){
@@ -518,8 +551,8 @@ $("attendBtn").onclick=function(){resetF();st.sel["Attending Saturday"]=1;syncCh
   p.style.cssText="left:"+(e.clientX+nx)+"px;top:"+(e.clientY+ny)+"px;--r:"+(a*180/Math.PI+90)+"deg";
   p.innerHTML=SVG;p.onanimationend=function(){p.remove()};box.appendChild(p)});
 })();
-$("count").textContent="Loading animals…";
-fetch("data.json").then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(d){mapPets(d);buildFilters();build()}).catch(function(){$("count").textContent="";$("grid").innerHTML='<div class="empty" style="grid-column:1/-1">Could not load data.json. If you opened index.html straight from your files, serve the folder with a local web server instead (for example, run <code>python3 -m http.server</code> in the project folder).</div>'});
+applySite();$("count").textContent="Loading "+SITE.noun+"…";
+fetch(DATA_URL).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(d){mapPets(d);buildFilters();build()}).catch(function(){$("count").textContent="";$("grid").innerHTML='<div class="empty" style="grid-column:1/-1">Could not load '+DATA_URL+'. If you opened index.html straight from your files, serve the folder with a local web server instead (for example, run <code>python3 -m http.server</code> in the project folder).</div>'});
 </script>
 </body>
 </html>
